@@ -17,3 +17,53 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+
+void stat(const double x[], int y, double z[]){
+//ค่าเฉลี่ยเลขคณิต (Arithmetic Mean)
+    double sum = 0;
+    for (int i = 0; i < y; i++)
+    {
+        sum += x[i]; 
+    }
+    z[0] = sum/y;
+
+//ส่วนเบี่ยงเบนมาตรฐาน (Standard Deviation)
+    double sum2 = 0;
+    for (int i = 0; i < y; i++)
+    {
+        sum2 += pow(x[i],2);
+        
+    }
+    z[1] = sqrt((sum2/y)-(pow(z[0],2)));
+    
+//ค่าเฉลี่ยเรขาคณิต (Geometric Mean)
+    double gm = 1.0;
+    for (int i = 0; i < y; i++)
+    {
+        gm *= x[i];
+        
+    }
+    z[2] = pow(gm,(double)1/y);
+
+
+//ค่าเฉลี่ยฮาร์โมนิก (Harmonic Mean)  
+     double hm = 0;
+     for (int i = 0; i < y; i++)
+     {
+         hm += 1/x[i];   
+     }
+    z[3] = y/hm;
+
+//ค่าสูงสุด (Max) และค่าต่ำสุด (Min) ของ Array
+    double max = x[0], min = x[0];
+    for (int i = 0; i < y; i++)
+    {
+        
+        if (x[i]> max) max = x[i];
+    
+        if (min > x[i]) min = x[i];
+        
+    }
+    z[4] = max;
+    z[5] = min;
+}
